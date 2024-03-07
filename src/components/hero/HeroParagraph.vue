@@ -13,7 +13,7 @@ export default {
       p1: `Check out my work `,
       p2: `below.`,
       p3: `To do so, please scroll your mouse wheel 
-      down if you have have native windows scrolling, 
+      down if you have native windows scrolling, 
       not the ridiculous “natural” mac scroll which so 
       many of us know all too much about. Anyway, if you have a 
       track pad, you probably want to swipe your fingers in an “upward” 

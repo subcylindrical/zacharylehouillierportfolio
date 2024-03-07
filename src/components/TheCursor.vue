@@ -86,9 +86,6 @@ export default {
     this.imgTl = gsap
       .timeline({
         paused: true,
-        onComplete: () => {
-          console.log('tl complete');
-        },
       })
       .to(this.$refs.cursorBox, {
         width: '500px',
@@ -99,7 +96,7 @@ export default {
         gridTemplateRows: '1fr',
         duration: 0.2,
         ease: 'ease-out',
-        backgroundColor: 'black',
+        '--overlay-opacity': 1,
       })
       .to(this.$refs.boxImg, {
         opacity: 0.8,
@@ -117,8 +114,6 @@ export default {
   z-index: 50;
   backdrop-filter: invert();
   -webkit-backdrop-filter: invert();
-  /* transition: width 0.3s ease-out, height 0.3s ease-out,
-    backdrop-filter 0.3s ease-out; */
   transition: backdrop-filter 0.3s ease;
   pointer-events: none;
   top: 0;
@@ -136,7 +131,7 @@ export default {
   width: 50px;
   min-height: 50px;
   position: fixed;
-  background: var(--main-orange);
+  background-color: var(--main-orange);
   border: 2px solid var(--main-orange);
   top: 0;
   left: 0;
@@ -146,6 +141,17 @@ export default {
   pointer-events: none;
   display: grid;
   grid-template-rows: 0fr;
+  --overlay-opacity: 0;
+}
+
+.cursor-box::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 2;
+  opacity: var(--overlay-opacity);
 }
 
 .cursor-hover {
@@ -159,7 +165,7 @@ export default {
 
 .box-hover {
   border-color: black;
-  background: rgba(255, 166, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
   backdrop-filter: invert(100%);
   -webkit-backdrop-filter: invert(100%);
 }
@@ -171,17 +177,7 @@ export default {
   filter: invert(100%);
   -webkit-filter: invert(100%);
   position: relative;
-}
-
-.cursor-box::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  background-color: black;
-  opacity: 0;
-  z-index: 100;
+  z-index: 3;
 }
 
 @media (width <= 950px) {
