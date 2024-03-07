@@ -3,7 +3,11 @@
     <img class="box-image" :src="workSource" ref="boxImg" />
   </div>
   <div class="cursor" :class="{ 'cursor-hover': focused }" ref="cursor">
-    <img src="../../images/zl-icon-white.svg" class="cursor-inner" alt="" />
+    <img
+      src="../assets/optimized-imgs/zl-icon-white.svg"
+      class="cursor-inner"
+      alt=""
+    />
   </div>
 </template>
 

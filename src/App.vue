@@ -4,7 +4,6 @@
     @mousemove="trackMouse"
     @mouseover="handleClickable"
   >
-    <!-- <NavMenuFixed /> -->
     <HeroSection :clientX="trackClientX" :clientY="trackClientY" />
     <div class="overflow">
       <WorkSection @show-image="setImgSrc" @is-showing-image="toggleImgShow" />
@@ -28,7 +27,6 @@ import WorkSection from '/src/components/work/WorkSection.vue';
 import SkillsSection from '/src/components/skills/SkillsSection.vue';
 import AboutMeSection from '/src/components/about/AboutMeSection.vue';
 import TheCursor from './components/TheCursor.vue';
-// import NavMenuFixed from './components/nav/NavMenuFixed.vue';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -41,7 +39,6 @@ export default {
     SkillsSection,
     AboutMeSection,
     TheCursor,
-    // NavMenuFixed,
   },
   data() {
     return {
@@ -188,7 +185,7 @@ h5 {
 }
 
 .background-wrapper {
-  background-image: url('/images/arabesque_invert-70.png');
+  background-image: url('../src/assets/optimized-imgs/arabesque_invert-70.png');
   background-repeat: repeat;
 }
 

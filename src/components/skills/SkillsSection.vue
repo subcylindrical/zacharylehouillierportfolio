@@ -44,34 +44,20 @@ export default {
   data() {
     return {
       imgSrcs: [
-        { src: require('/images/skills-dev.png'), rotation: '-8deg' },
-        { src: require('/images/skills-design-shadow.png'), rotation: '2deg' },
         {
-          src: require('/images/skills-build.png'),
+          src: require('../../assets/optimized-imgs/code.webp'),
+          rotation: '-8deg',
+        },
+        {
+          src: require('../../assets/optimized-imgs/design.webp'),
+          rotation: '2deg',
+        },
+        {
+          src: require('../../assets/optimized-imgs/build.webp'),
           rotation: '-15deg',
         },
       ],
       timeline: null,
-      imgRefs: [
-        require('/images/silhouettes/cropped/frame-17.png'),
-        require('/images/silhouettes/cropped/frame-16.png'),
-        require('/images/silhouettes/cropped/frame-15.png'),
-        require('/images/silhouettes/cropped/frame-14.png'),
-        require('/images/silhouettes/cropped/frame-13.png'),
-        require('/images/silhouettes/cropped/frame-12.png'),
-        require('/images/silhouettes/cropped/frame-12.png'),
-        require('/images/silhouettes/cropped/frame-11.png'),
-        require('/images/silhouettes/cropped/frame-10.png'),
-        require('/images/silhouettes/cropped/frame-9.png'),
-        require('/images/silhouettes/cropped/frame-8.png'),
-        require('/images/silhouettes/cropped/frame-7.png'),
-        require('/images/silhouettes/cropped/frame-6.png'),
-        require('/images/silhouettes/cropped/frame-5.png'),
-        require('/images/silhouettes/cropped/frame-4.png'),
-        require('/images/silhouettes/cropped/frame-3.png'),
-        require('/images/silhouettes/cropped/frame-2.png'),
-        require('/images/silhouettes/cropped/frame-1.png'),
-      ],
       skills: [
         {
           name: '01.Code',

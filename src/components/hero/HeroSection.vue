@@ -92,7 +92,6 @@ h1 {
 }
 
 .hero-content {
-  /* background-image: url('/images/hero-texture-image.webp'); */
   background-image: url('../../assets/optimized-imgs/hero-image.webp');
   width: clamp(300px, 47rem, 1000px);
   height: clamp(300px, 47rem, 1000px);
@@ -119,7 +118,6 @@ h1 {
 
 @media (width <= 950px) {
   .hero-content {
-    /* background-image: url('/images/notebook.webp'); */
     background-image: none;
     background-size: contain;
     background-position: 50% 50%;
@@ -145,7 +143,6 @@ h1 {
     display: none;
   }
   .sub-heading {
-    /* margin-top: 0.5rem; */
     font-size: 2.5rem;
     width: 100%;
     text-align: center;
