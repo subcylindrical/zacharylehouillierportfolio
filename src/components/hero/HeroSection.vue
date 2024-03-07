@@ -1,6 +1,6 @@
 <template>
   <section @mousemove="imagePerspeciveShift">
-    <div class="hero-content">
+    <div class="hero-content" fetchpriority="high" rel="preload">
       <h1 class="section-heading">
         <transition appear @enter="enter">
           <span>Zachary Lehouillier</span>
