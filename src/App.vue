@@ -4,11 +4,15 @@
     @mousemove="trackMouse"
     @mouseover="handleClickable"
   >
+    <div ref="homeSection" class="scroller"></div>
     <HeroSection :clientX="trackClientX" :clientY="trackClientY" />
     <div class="overflow">
+      <div ref="workSection" class="scroller"></div>
       <WorkSection @show-image="setImgSrc" @is-showing-image="toggleImgShow" />
+      <div ref="skillsSection" class="scroller"></div>
       <SkillsSection :clientX="trackClientX" :clientY="trackClientY" />
     </div>
+    <div ref="aboutSection" class="scroller"></div>
     <AboutMeSection />
   </div>
   <teleport to=".earth-satellite-container" :disabled="cursorTeleportDisabled">
@@ -19,6 +23,7 @@
       :showImage="cursorImgShown"
     />
   </teleport>
+  <div ref="contactSection" class="scroller"></div>
 </template>
 
 <script>
@@ -30,7 +35,9 @@ import TheCursor from './components/TheCursor.vue';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 export default {
   components: {
@@ -59,6 +66,11 @@ export default {
       }
     },
   },
+  provide() {
+    return {
+      scrollToSection: this.scroll,
+    };
+  },
   methods: {
     trackMouse(el) {
       this.trackClientX = el.clientX;
@@ -84,6 +96,18 @@ export default {
     },
     moveCursorFromWork() {
       this.cursorTeleportDisabled = true;
+    },
+    scroll(ref) {
+      let location = this.$refs[ref];
+      // location.scrollIntoView({ behavior: 'smooth', duration: 2000 });
+      const offset = ref === 'skillsSection' ? -250 : 0;
+      console.log(offset);
+      gsap.to(window, {
+        duration: 1.25,
+        // scrollTo: location,
+        scrollTo: { y: location, offsetY: offset },
+        ease: 'sine.inOut',
+      });
     },
   },
 };
@@ -191,6 +215,10 @@ h5 {
 
 .overflow {
   overflow: clip;
+}
+
+.scroller {
+  display: hidden;
 }
 
 @media (width <= 950px) {

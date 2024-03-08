@@ -81,7 +81,7 @@ export default {
       opacity: 0,
       ease: 'circ.inOut',
     });
-    gsap.from('.contact-text', {
+    gsap.from('.contact-text-wrapper', {
       scrollTrigger: {
         trigger: this.$refs.about,
         start: '95% bottom',
@@ -215,14 +215,32 @@ section {
     font-size: 20rem;
   }
 }
+@media (width <= 840px) {
+  .contact-info p {
+    font-size: 1.75rem;
+    letter-spacing: 5px;
+  }
+  .contact-info {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 @media (width <= 550px) {
   .contact-text {
     font-size: 15rem;
+  }
+  .contact-info {
+    bottom: 110%;
   }
 }
 @media (width <= 360px) {
   .contact-text {
     font-size: 12rem;
+  }
+  .contact-info p {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
   }
 }
 </style>

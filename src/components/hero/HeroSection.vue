@@ -41,6 +41,7 @@ export default {
     HeroParagraph,
   },
   props: ['clientX', 'clientY'],
+  emits: ['scroll-to-section'],
   data() {
     return {
       notebookImage: require('../../assets/optimized-imgs/notebook.webp'),
@@ -79,6 +80,8 @@ h1 {
 .sub-heading {
   font-size: 1.5rem;
   font-weight: 100;
+  margin-top: -0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .welcome-paragraph {

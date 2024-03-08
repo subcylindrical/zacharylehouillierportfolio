@@ -7,6 +7,7 @@
         :name="navItem.name"
         :current="navItem.current"
         :key="navItem.name"
+        @click="scrollToSection(navItem.location)"
       />
     </ul>
   </div>
@@ -19,15 +20,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default {
   components: { NavMenuItem },
+  inject: ['scrollToSection'],
   data() {
     return {
       tl: null,
       navItems: [
-        { name: 'Home', current: true, location: '' },
-        { name: 'Work', current: false, location: '' },
-        { name: 'Skills', current: false, location: '' },
-        { name: 'About', current: false, location: '' },
-        { name: 'Contact', current: false, location: '' },
+        { name: 'Home', current: true, location: 'homeSection' },
+        { name: 'Work', current: false, location: 'workSection' },
+        { name: 'Skills', current: false, location: 'skillsSection' },
+        { name: 'About', current: false, location: 'aboutSection' },
+        { name: 'Contact', current: false, location: 'contactSection' },
       ],
     };
   },
