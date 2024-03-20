@@ -8,21 +8,19 @@
     <HeroSection :clientX="trackClientX" :clientY="trackClientY" />
     <div class="overflow">
       <div ref="workSection" class="scroller"></div>
-      <WorkSection @show-image="setImgSrc" @is-showing-image="toggleImgShow" />
+      <WorkSection />
       <div ref="skillsSection" class="scroller"></div>
       <SkillsSection :clientX="trackClientX" :clientY="trackClientY" />
     </div>
     <div ref="aboutSection" class="scroller"></div>
     <AboutMeSection />
   </div>
-  <teleport to=".earth-satellite-container" :disabled="cursorTeleportDisabled">
-    <TheCursor
-      :workSource="workSelection"
-      :focused="focused"
-      :mousePos="[trackClientX, trackClientY]"
-      :showImage="cursorImgShown"
-    />
-  </teleport>
+  <TheCursor
+    :workSource="workSelection"
+    :focused="focused"
+    :mousePos="[trackClientX, trackClientY]"
+    :showImage="cursorImgShown"
+  />
   <div ref="contactSection" class="scroller"></div>
 </template>
 
@@ -83,28 +81,11 @@ export default {
         this.focused = false;
       }
     },
-    setImgSrc(source) {
-      this.workSelection = source;
-    },
-    toggleImgShow(isShowing) {
-      this.cursorImgShown = isShowing;
-    },
-    moveCursorToWork() {
-      // if (this.cursorTeleportDisabled && this.cursorImgShown) {
-      this.cursorTeleportDisabled = false;
-      // }
-    },
-    moveCursorFromWork() {
-      this.cursorTeleportDisabled = true;
-    },
     scroll(ref) {
       let location = this.$refs[ref];
-      // location.scrollIntoView({ behavior: 'smooth', duration: 2000 });
       const offset = ref === 'skillsSection' ? -250 : 0;
-      console.log(offset);
       gsap.to(window, {
         duration: 1.25,
-        // scrollTo: location,
         scrollTo: { y: location, offsetY: offset },
         ease: 'sine.inOut',
       });

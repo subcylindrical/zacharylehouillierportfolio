@@ -1,5 +1,5 @@
 <template>
-  <div class="work-items" ref="workItems">
+  <div class="work-items" ref="workItems" @click="emitIndex">
     <WorkItem
       class="work-item"
       v-for="(name, index) in projects"
@@ -14,13 +14,14 @@
 
 <script>
 import WorkItem from './WorkItem.vue';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
   props: ['projects', 'section'],
-  emits: ['show-image'],
+  emits: ['show-popup'],
   components: { WorkItem },
   data() {
     return {
@@ -32,19 +33,24 @@ export default {
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    emitIndex(e) {
+      if (e.target.hasAttribute('clickable')) {
+        this.$emit('show-popup', this.displayIndex);
+      }
+    },
+  },
   watch: {
     scrollProgress(oldScroll) {
       if (this.displayIndex != Math.ceil(oldScroll * this.n)) {
         this.displayIndex = Math.ceil(oldScroll * this.n);
       }
     },
-    displayIndex(index) {
-      this.$emit('show-image', index);
-    },
+    // displayIndex(index) {
+    //   this.$emit('show-popup', index);
+    // },
   },
   mounted() {
-    this.$emit('show-image', this.displayIndex);
     this.workTl = gsap
       .timeline({
         scrollTrigger: {

@@ -42,17 +42,17 @@ export default {
         });
       }
     },
-    showImage() {
-      if (this.showImage) {
-        setTimeout(() => {
-          this.imgTl.play();
-        }, 5);
-      } else {
-        setTimeout(() => {
-          this.imgTl.reverse();
-        }, 5);
-      }
-    },
+    // showImage() {
+    //   if (this.showImage) {
+    //     setTimeout(() => {
+    //       this.imgTl.play();
+    //     }, 5);
+    //   } else {
+    //     setTimeout(() => {
+    //       this.imgTl.reverse();
+    //     }, 5);
+    //   }
+    // },
   },
   methods: {
     animateCursor(clientX, clientY) {

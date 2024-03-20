@@ -1,6 +1,7 @@
 <template>
   <div
     :class="[{ center: isCenter }, { visible: isFirst || isThird || isCenter }]"
+    :clickable="isCenter ? true : null"
   >
     <p id="proj-platform">01^{{ project.plat }}</p>
     <p id="proj-name">{{ project.name }}</p>
@@ -78,6 +79,7 @@ p:nth-of-type(3) {
   /* font-size: 2.9rem; */
   transform: scale(1.9);
   margin: 1.2rem 0;
+  pointer-events: none;
 }
 
 .center p:nth-of-type(1),

@@ -1,5 +1,10 @@
 <template>
   <section class="work-section">
+    <WorkPopup
+      :project="openProject"
+      :isVisible="popupOpen"
+      @closePopup="this.popupOpen = false"
+    />
     <div class="sticky-wrapper" ref="section">
       <div class="work-section-container">
         <h2 class="section-heading">
@@ -9,7 +14,7 @@
         <WorkContainer
           :projects="projects"
           :section="$refs.section"
-          @show-image="showImageToggle"
+          @show-popup="showImageToggle"
         />
       </div>
       <div class="earth-satellite-container">
@@ -22,13 +27,13 @@
 
 <script>
 import WorkContainer from './WorkContainer.vue';
+import WorkPopup from './WorkPopup.vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
-  components: { WorkContainer },
-  emits: ['show-image', 'is-showing-image'],
+  components: { WorkContainer, WorkPopup },
   data() {
     return {
       isShowingImage: false,
@@ -38,57 +43,55 @@ export default {
       timeline2: null,
       imgTl: null,
       projects: [
-        // { name: '↓', plat: '', desc: '' },
         {
           name: 'The Rise Design',
           plat: 'Webflow',
           desc: 'ui/ux design | web development',
-          imgSrc: require('../../../src/assets/optimized-imgs/work/therisedesign.webp'),
+          imgSrc: require('../../../src/assets/optimized-imgs/work/full-page/ariel.webp'),
         },
         {
           name: 'Front Porch Coffee Roasters',
           plat: 'Webflow',
           desc: 'ui/ux design | web development',
-          imgSrc: require('../../../src/assets/optimized-imgs/work/frontporchcoffeeroasters.webp'),
+          imgSrc: require('../../../src/assets/optimized-imgs/work/full-page/porch.webp'),
         },
         {
           name: 'Hawthorne Landscaping',
           plat: 'Webflow',
           desc: 'ui/ux design | web development',
-          imgSrc: require('../../../src/assets/optimized-imgs/work/hawthornelandscaping.webp'),
+          imgSrc: require('../../../src/assets/optimized-imgs/work/full-page/hawthorne.webp'),
         },
         {
           name: 'Ariel Taylor Art Portfolio',
           plat: 'Webflow',
           desc: 'ui/ux design | web development',
-          imgSrc: require('../../../src/assets/optimized-imgs/work/arieltaylorartportfolio.webp'),
+          imgSrc: require('../../../src/assets/optimized-imgs/work/full-page/ariel.webp'),
         },
         {
           name: 'JSLAMMED',
           plat: 'Webflow',
           desc: 'ui/ux design | web development',
-          imgSrc: require('../../../src/assets/optimized-imgs/work/jslammed.webp'),
+          imgSrc: require('../../../src/assets/optimized-imgs/work/full-page/j.webp'),
         },
         {
           name: 'Mindful Moves Mara',
           plat: 'Webflow',
           desc: 'ui/ux design | web development',
-          imgSrc: require('../../../src/assets/optimized-imgs/work/mindfulmovesmara.webp'),
+          imgSrc: require('../../../src/assets/optimized-imgs/work/full-page/mara.webp'),
         },
         // { name: '↑', plat: '', desc: '' },
       ],
+      openProject: 'J SLAMMED',
+      popupOpen: false,
     };
   },
   methods: {
     showImageToggle(target) {
-      this.$emit('show-image', this.projects[target].imgSrc);
+      this.openProject = this.projects[target];
+      this.popupOpen = true;
     },
   },
-  watch: {
-    isShowingImage() {
-      this.$emit('is-showing-image', this.isShowingImage);
-    },
-  },
+
   mounted() {
     gsap.set('.satellite', {
       x: '-20%',
