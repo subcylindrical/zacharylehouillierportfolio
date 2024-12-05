@@ -44,12 +44,6 @@ export default {
       imgTl: null,
       projects: [
         {
-          name: 'The Rise Design',
-          plat: 'Webflow',
-          desc: 'ui/ux design | web development',
-          imgSrc: require('../../../src/assets/optimized-imgs/work/full-page/ariel.webp'),
-        },
-        {
           name: 'Front Porch Coffee Roasters',
           plat: 'Webflow',
           desc: 'ui/ux design | web development',
